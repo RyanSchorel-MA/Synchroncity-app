@@ -1,24 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synchroncity app
-    </title>
+    <title>Gebruikers Matching App</title>
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
-
-    <h1>Synchroncity app
-    </h1>
-    <p>test</p>
+    <div class="container">
+        <h1>Gebruikers Matching App</h1>
 
 
+        <div id="registration">
+            <h2>Aanmelden</h2>
+            <form id="registerForm">
+                <label for="name">Naam:</label>
+                <input type="text" id="name" name="name" required>
 
+                <label for="phone">Telefoonnummer:</label>
+                <input type="tel" id="phone" name="phone" required>
 
+                <div class="checkbox">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">Ik ga akkoord met het privacy statement</label>
+                </div>
 
+                <button type="submit">Aanmelden</button>
+            </form>
+        </div>
 
+       
+      
+   
 </body>
 
 </html>
