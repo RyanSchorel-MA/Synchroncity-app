@@ -1,0 +1,32 @@
+# Gebruik een PHP 8.3 image
+FROM php:8.3-fpm
+
+# Installeer systeem afhankelijkheden voor Laravel en Composer
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    git \
+    zip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
+# Installeer Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Zet de werkdirectory in de container
+WORKDIR /var/www/html
+
+# Kopieer je Laravel-app naar de container
+COPY . .
+
+# Installeer de PHP afhankelijkheden
+RUN composer install
+
+# Exposeer poort 8000 voor de Laravel app
+EXPOSE 8000
+
+# Start de Laravel server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0"]

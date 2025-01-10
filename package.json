@@ -5,6 +5,11 @@
         "build": "vite build",
         "dev": "vite"
     },
+
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+      },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",

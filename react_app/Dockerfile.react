@@ -1,0 +1,20 @@
+# Gebruik een officieel Node.js image
+FROM node:16
+
+# Zet de werkmap in de container
+WORKDIR /app
+
+# Kopieer package.json en package-lock.json (als die er is) naar de container
+COPY package*.json ./
+
+# Installeer de afhankelijkheden
+RUN npm install --legacy-peer-deps
+
+# Kopieer de rest van je React-app naar de container
+COPY . .
+
+# Stel de poort in die de app gaat gebruiken
+EXPOSE 3000
+
+# Start de React-app
+CMD ["npm", "start"]
