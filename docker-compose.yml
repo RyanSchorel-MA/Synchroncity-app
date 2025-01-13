@@ -1,25 +1,25 @@
 version: '3.8'
 
 services:
-  # Nginx Web Server
   nginx:
     image: nginx:latest
     ports:
-      - "80:80"  # De poort 80 van de host is gekoppeld aan de poort 80 van de container
+      - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Gebruik je eigen Nginx-configuratiebestand
-      - ./:/var/www/html  # Koppel de Laravel-app naar de container
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./:/var/www/html
     depends_on:
-      - laravel  # Wacht totdat de Laravel-app klaar is
-      - react    # Wacht totdat de React-app klaar is
+      - laravel
+      - react
+    networks:
+      - app-network
 
-  # Laravel (PHP) Web Server
   laravel:
     build:
       context: .
-      dockerfile: Dockerfile.laravel  # Bouw vanuit een aangepaste Dockerfile voor Laravel
+      dockerfile: Dockerfile.laravel
     ports:
-      - "8000:8000"  # De poort 8000 van de host is gekoppeld aan de poort 8000 van de container
+      - "8000:8000"
     environment:
       DB_HOST: db
       DB_PORT: 3306
@@ -27,22 +27,24 @@ services:
       DB_USERNAME: ${DB_USER:-laravel_user}
       DB_PASSWORD: ${DB_PASS:-password}
     volumes:
-      - ./:/var/www/html  # Zorg ervoor dat de Laravel-bestanden in de container terechtkomen
+      - ./:/var/www/html
     depends_on:
-      - db  # Wacht totdat de MySQL-database klaar is
+      - db
+    networks:
+      - app-network
 
-  # React Frontend Server
   react:
     build:
-      context: ./react_app  # De map waarin de React-app zich bevindt
-      dockerfile: Dockerfile.react  # Gebruik de aangepaste Dockerfile voor de React-app
+      context: ./react_app
+      dockerfile: Dockerfile.react
     ports:
-      - "3000:3000"  # De poort 3000 van de host is gekoppeld aan de poort 3000 van de container
+      - "3000:3000"
     volumes:
-      - ./react_app:/app  # Zorg ervoor dat de React-bestanden in de container terechtkomen
-    command: npm start  # Start de React-app met npm
+      - ./react_app:/app
+    command: npm start
+    networks:
+      - app-network
 
-  # MySQL Database
   db:
     image: mysql:latest
     environment:
@@ -51,7 +53,13 @@ services:
       MYSQL_USER: ${MYSQL_USER:-laravel_user}
       MYSQL_PASSWORD: ${MYSQL_PASS:-password}
     volumes:
-      - mysql_data:/var/lib/mysql  # Gegevens worden opgeslagen in een persistent volume
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
 
 volumes:
   mysql_data:
+
+networks:
+  app-network:
+    driver: bridge

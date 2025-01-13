@@ -1,20 +1,31 @@
-# Gebruik een officieel Node.js image
-FROM node:16
+# Dockerfile.react
 
-# Zet de werkmap in de container
+# Stap 1: Bouw de React app
+FROM node:16 AS build
+
 WORKDIR /app
 
-# Kopieer package.json en package-lock.json (als die er is) naar de container
-COPY package*.json ./
+# Installeer afhankelijkheden
+COPY ./react_app/package.json ./react_app/package-lock.json ./
+RUN npm install
 
-# Installeer de afhankelijkheden
-RUN npm install --legacy-peer-deps
+# Kopieer de rest van de React app
+COPY ./react_app /app
 
-# Kopieer de rest van je React-app naar de container
-COPY . .
+# Bouw de app voor productie
+RUN npm run build
 
-# Stel de poort in die de app gaat gebruiken
-EXPOSE 3000
+# Stap 2: Gebruik Nginx om de gebouwe React app te serveren
+FROM nginx:latest
 
-# Start de React-app
-CMD ["npm", "start"]
+# Verwijder default configuratie van Nginx
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Kopieer de gebouwe React bestanden naar Nginx
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Poort 80 voor de webserver
+EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
