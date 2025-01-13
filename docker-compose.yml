@@ -38,10 +38,10 @@ services:
       context: ./react_app
       dockerfile: Dockerfile.react
     ports:
-      - "80:80"  # Nginx draait React op poort 80
+      - "3000:3000"  # React draait op poort 3000
     volumes:
       - ./react_app:/app
-    command: ["nginx", "-g", "daemon off;"]  # React-app via Nginx
+    command: ["npm", "start"]  # Voor ontwikkelserver
     networks:
       - app-network
 

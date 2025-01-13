@@ -1,16 +1,16 @@
-# Dockerfile.react
-
 # Stap 1: Bouw de React app
 FROM node:16 AS build
 
 WORKDIR /app
 
+# Kopieer package.json en package-lock.json naar de container
+COPY package.json package-lock.json ./
+
 # Installeer afhankelijkheden
-COPY ./react_app/package.json ./react_app/package-lock.json ./
 RUN npm install
 
-# Kopieer de rest van de React app
-COPY ./react_app /app
+# Kopieer de rest van de React app naar de container
+COPY . .
 
 # Bouw de app voor productie
 RUN npm run build
