@@ -1,0 +1,31 @@
+# Stap 1: Bouw de React app
+FROM node:16 AS build
+
+WORKDIR /app
+
+# Kopieer package.json en package-lock.json naar de container
+COPY package.json package-lock.json ./
+
+# Installeer afhankelijkheden
+RUN npm install
+
+# Kopieer de rest van de React app naar de container
+COPY . .
+
+# Bouw de app voor productie
+RUN npm run build
+
+# Stap 2: Gebruik Nginx om de gebouwe React app te serveren
+FROM nginx:latest
+
+# Verwijder default configuratie van Nginx
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Kopieer de gebouwe React bestanden naar Nginx
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Poort 80 voor de webserver
+EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
