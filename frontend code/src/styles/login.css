@@ -1,0 +1,58 @@
+.login_container {
+    width: 60rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: white;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .login_title{
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .login_input {
+    width: 90%;
+    margin: 1rem;
+    padding: 1rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1.7rem;
+  }
+  
+  .checkbox-container {
+    margin: 1.5rem;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .checkbox-container input {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+  }
+  
+  .login-button {
+    width: 100%;
+    font-size: 1.7rem;
+    padding: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .Error{
+    color: red;
+    font-size: 2rem;
+  }
+  
+  

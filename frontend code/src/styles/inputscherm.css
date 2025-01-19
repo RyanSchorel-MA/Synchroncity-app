@@ -1,0 +1,143 @@
+.input-container {
+    width: 100rem;
+    height: 50rem;
+    padding: 3rem;
+    text-align: center;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+}
+
+form{
+    margin-top: 2rem;
+}
+ 
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+}
+
+.options-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.left-container,
+.right-container {
+    width: 45%;
+    text-align: left;
+}
+
+.left-container label,
+.right-container label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.custom-input {
+    width: 100%;
+    height: 6rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1.4rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+}
+
+h3{
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+label input {
+    margin-right: 10px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.error {
+    color: red;
+    font-size: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    visibility: hidden;
+}
+  
+.error.active {
+    visibility: visible;
+}
+
+.back-button {
+    position: absolute;
+    top: 5rem;
+    left: 25rem;
+    padding: 1.4rem 3rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
+    background-color: #3a7bd5;
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer; 
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #2575fc;
+    transform: translateY(-0.5rem);
+}
+.matches-button{
+    position: absolute;
+    top: 5rem;
+    right: 25rem;
+    padding: 1.4rem 3rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
+    background-color: #3a7bd5;
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer; 
+    transition: all 0.2s ease;    
+}
+
+.matches-button:hover {
+    background-color: #2575fc;
+    transform: translateY(-0.5rem);
+}
+  
+
+@media screen and (max-width: 1265px){
+    .input-container{
+      width: 90rem;
+    }
+
+    .back-button{
+      left: 5rem;
+    }
+
+    .matches-button{
+      right: 5rem;
+    }
+}

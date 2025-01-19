@@ -1,0 +1,38 @@
+.page-background{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin-bottom: 30rem;
+}
+  
+.thank-you-message{
+    width: 50rem;
+    font-size: 2.4rem;
+    font-weight: 600;
+    text-align: center;
+    color: black;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.share-button{
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4caf50;
+    padding: 1.5rem 3rem;
+    border-radius: 3rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.share-button:hover{
+    background-color: #43a047;
+    transform: translateY(-0.4rem);
+}

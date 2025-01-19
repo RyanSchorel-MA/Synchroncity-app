@@ -1,0 +1,47 @@
+.keuze-container {
+    width: 150rem;
+    height: 50rem;
+    margin: 5rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5rem;
+}
+  
+  
+.keuze-button {
+    width: 100%;
+    height: 100%;
+    font-size: 3.5rem;
+    background-color: #E4A84A;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.keuze-button:hover {
+    background-color:  #C68E3A;
+    transform: translateY(-1rem);
+}
+
+@media screen and (max-width: 1515px) {
+    .keuze-container{
+      width: 120rem;
+    }
+}
+
+@media screen and (max-width: 1265px) {
+    .keuze-container{
+      width: 100rem;
+    }
+}
+
+@media screen and (max-width: 1265px) {
+    .keuze-container{
+      width: 90rem;
+    }
+}
