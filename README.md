@@ -3,7 +3,7 @@
 ### Team 8
 * Ryan Schorel
 * Mert Say
-* Lara Trivien
+* Lara Trivieri
 ## ✨ |Kenmerken:
 De technieken die in dit project worden gebruikt zijn: 
 ## 📦 | Inhoud:
